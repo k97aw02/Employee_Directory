@@ -1,54 +1,26 @@
-import React, { useReducer, useRef } from "react";
-import "./App.css";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'add':
-      return state.concat({ name: action.payload });
-    default:
-      return state;
-  }
-}; // [{name: 'Jeff}]
-
-function Count() {
-  const inputRef = useRef();
-
-  const [users, dispatch] = useReducer(reducer, []);
-  const [name, setName] = useState('');
-
-
-const TodoList = () => {
-  // Placeholder array
-  const items = [];
-
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
-
+function App() {
   return (
-    <div className="container text-center">
-      <h1>Create a Todo List!</h1>
-      <form className="form-group mt-5" onSubmit={handleSubmit}>
-        <input className="form-control" placeholder="Start typing what you need to do..." />
-        <button className="btn btn-success mt-3 mb-5" type="submit" 
-          onClick={() => {
-          dispatch({ type: 'add', payload: name });
-          setName('');
-        }}
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          Add to List
-        </button>
-      </form>
-      <h4>My Todo List:</h4>
-      <ul className="list-group">
-        {items.map((item, index) => (
-          <li className="list-group-item" key={item.id}>
-            {item.name}{" "}
-          </li>
-        ))}
-      </ul>
+          Learn React
+        </a>
+      </header>
     </div>
   );
-};
+}
 
-export default TodoList;
+export default App;
