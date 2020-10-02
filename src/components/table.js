@@ -1,52 +1,42 @@
-function renderTableData() {
-    return this.state.employees.map((employee, index) => {
-       const { id, first_name, last_name, email, phone, postion, department, location } = employee //destructuring
-       return (
-          <tr key={id}>
-             <td>{id}</td>
-             <td>{first_name}</td>
-             <td>{last_name}</td>
-             <td>{email}</td>
-             <td>{phone}</td>
-             <td>{postion}</td>
-             <td>{department}</td>
-             <td>{location}</td>
-             <td><button onClick={() => props.removeEmployee(index)}>Delete</button></td>
-          </tr>
-       );
-    });
- };
+import React from 'react';
+import './Table.css'
 
- render() {
-    return (
-       <div>
-          <h1 id='title'>Employee Directory Table</h1>
-          <table id='employees'>
-             <tbody>
-                {this.renderTableData()}
-             </tbody>
-          </table>
-       </div>
-    )
- };
-
- function renderTableHeader() {
-   let header = Object.keys(this.state.students[0])
-   return header.map((key, index) => {
-      return <th key={index}>{key.toUpperCase()}</th>
-   });
-};
-
-render() {
-   return (
-      <div>
-         <h1 id='title'>React Dynamic Table</h1>
-         <table id='students'>
-            <tbody>
-               <tr>{this.renderTableHeader()}</tr>
-               {this.renderTableData()}
-            </tbody>
-         </table>
-      </div>
-   )
-}
+const Table = (props) => {
+    const { employeeData, removeEmployee, filteredEmployees } = props;
+    const rows = props.filteredEmployees.map((row, index) => {
+        return(<tr className="table-body" key={index}>
+                    <td className="active-row">{row.id}</td>
+                    <td>{row.first_name}</td>
+                    <td>{row.last_name}</td>
+                    <td>{row.email}</td>
+                    <td>{row.phone}</td>
+                    <td>{row.position}</td>
+                    <td>{row.department}</td>
+                    <td>{row.location}</td>
+                    <td>
+                        <button onClick={() => props.removeEmployee(index)}>Delete</button>
+                    </td>
+                </tr>)
+    } );
+        return (
+            <div className="employeeTable">
+                <table className="content-table">
+                    <thead className="header">
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Position</th>
+                            <th><button onClick={() => props.handleSort("department")}>Department</button></th>
+                            <th>Location</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>{rows}</tbody>
+                    
+                </table> 
+            </div> ); 
+    }
+export default Table;

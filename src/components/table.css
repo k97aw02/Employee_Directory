@@ -1,0 +1,63 @@
+.employeeTable {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.content-table {
+    opacity: 0;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    animation-name: table;
+    animation-duration: 3s;
+    animation-delay: 2.75s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes table {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.table-body td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd
+
+}
+
+.table-body:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.table-body:last-of-type {
+    border-bottom: 2px solid #090909;
+}
+
+.table-body td.active-row {
+    font-weight: bold;
+    color: #000000
+    
+}
+
+.table-body button {
+    background-color: rgb(21, 126, 255);
+    border-radius: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    height: 22px;
+}
+.header tr {
+    background-color: rgb(21, 126, 255);
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.header th {
+    padding: 12px 15px;
+}
