@@ -85,7 +85,7 @@ class App extends Component {
       
       
       const filteredEmployees = this.state.employees.filter((employee) => {
-        return employee.department.toLowerCase().includes(this.state.searchEmployee.toLowerCase())
+        return employee.first_name.toLowerCase().includes(this.state.searchEmployee.toLowerCase())
       })
 
       return (
